@@ -1,5 +1,9 @@
 <?php 
 
+include 'php/sedo.php';
+
+/*
+
 // Initialize
 include 'php/init.php';
 
@@ -27,4 +31,4 @@ ob_end_clean();
 // Send HTML to browser
 echo $html;
 
-?>
+*/
