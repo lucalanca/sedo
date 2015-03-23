@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SEDO Dictionary words</title>
+  <title>SEDO Dictionary Words</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container-fluid">
+
 <?php
 
 error_reporting(E_ALL);
@@ -15,19 +16,21 @@ require_once('soap/nusoap/nusoap.php');
 function create_domains($text)
 {
     $lines = preg_split("/\s/", $text);
-
     $domains = array();
+
     foreach ($lines as $line) {
-       
+
         $line = trim($line);
         $line = preg_replace('/[^a-z0-9\-]/i', '', $line);
 
-        if ($line) {
-          $extensions = array('com', 'net', 'io', 'co');
-          foreach ($extensions as $ext) {
-            $domains[] = $line . '.' . $ext;
-          }
-        }
+        $domains[] = $line .'.com';
+
+//        if ($line) {
+//          $extensions = array('com','net','io','co');
+//          foreach ($extensions as $ext) {
+//            $domains[] = $line . '.' . $ext;
+//          }
+//        }
     }
 
     return $domains;
@@ -42,7 +45,7 @@ $text = isset($_POST['text']) ? $_POST['text'] : null;
     <label>Input</label>
     <textarea class="form-control" name="text"><?php echo htmlentities($text); ?></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Go</button>
+  <button type="submit" class="btn btn-primary">Check names</button>
 </form>
 
 <?php
